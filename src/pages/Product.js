@@ -26,9 +26,9 @@ const product = {
     },
   ],
   colors: [
-    { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-    { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-    { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+    { id: 1, name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+    { id: 2, name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
+    { id: 3, name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
   ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -56,30 +56,28 @@ export default function Product() {
       <div className="pt-6">
         {/* Image gallery */}
         <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-          <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+          <div className={`aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block ${selectedColor === undefined ? '' : 'hidden'}`}>
             <img
               src={product.images[0].src}
               alt={product.images[0].alt}
               className="w-full h-full object-center object-cover"
             />
           </div>
-          <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-            <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-              <img
-                src={product.images[1].src}
-                alt={product.images[1].alt}
-                className="w-full h-full object-center object-cover"
-              />
-            </div>
-            <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-              <img
-                src={product.images[2].src}
-                alt={product.images[2].alt}
-                className="w-full h-full object-center object-cover"
-              />
-            </div>
+          <div className={`aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 ${selectedColor?.id === 1 ? '' : 'hidden'}`}>
+            <img
+              src={product.images[1].src}
+              alt={product.images[1].alt}
+              className="w-full h-full object-center object-cover"
+            />
           </div>
-          <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
+          <div className={`aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 ${selectedColor?.id === 2 ? '' : 'hidden'}`}>
+            <img
+              src={product.images[2].src}
+              alt={product.images[2].alt}
+              className="w-full h-full object-center object-cover"
+            />
+          </div>
+          <div className={`aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4 ${selectedColor?.id === 3 ? '' : 'hidden'}`}>
             <img
               src={product.images[3].src}
               alt={product.images[3].alt}
